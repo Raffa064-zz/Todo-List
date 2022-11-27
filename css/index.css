@@ -61,14 +61,19 @@ input:checked + .label {
     font-style: italic;
 }
 
-span[contenteditable='true'] {
+.label {
+    display: inline;
     padding: 4px;
     outline: none;
 }
 
-span[contenteditable='true']:focus {
+.label:focus {
     border: 1px solid grey;
     border-radius: 3px;
+}
+
+.label br {
+    display: none;
 }
 
 .placeholder {
