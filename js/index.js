@@ -1,5 +1,5 @@
-function createTask(container, id) {
-    const html = '<input type="checkbox"> <span class="label" contenteditable="true"><span class="placeholder">Type the task title here</span></span>'
+function createTask(container, id, disablePlaceHolder) {
+    const html = '<input type="checkbox"> <span class="label" contenteditable="true">'+(disablePlaceHolder ? '' : '<span class="placeholder">Type the task title here</span>')+'</span>'
     const li = document.createElement('li')
     li.id = id
     li.innerHTML = html
@@ -23,7 +23,7 @@ function createTask(container, id) {
     }
 
     data.label.addEventListener('focusout', () => {
-        if (data.label.innerText.trim().length == 0) {
+        if (data.label.innerText.trim().length === 0) {
             container.removeChild(li)
         }
         update()
@@ -68,7 +68,7 @@ function load() {
 
             for (let i = 0; i < tasksAsArray.length; i++) {
                 const task = tasksAsArray[i]
-                const data = createTask(taskList, task.id)
+                const data = createTask(taskList, task.id, true)
                 data.checkbox.checked = task.checked
                 data.label.innerText = task.label
             }
