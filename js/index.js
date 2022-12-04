@@ -18,9 +18,11 @@ function createTask(container, id, disablePlaceHolder) {
 
     data.label.onkeydown = (event) => {
         const placeholder = document.querySelector(`#${id} .placeholder`)
-        data.label.removeChild(placeholder)
+        if (placeholder) {
+            data.label.removeChild(placeholder)
+        }
         data.label.onkeydown = null
-    }
+    } 
 
     data.label.addEventListener('focusout', () => {
         if (data.label.innerText.trim().length === 0) {
